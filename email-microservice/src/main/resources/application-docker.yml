@@ -1,0 +1,55 @@
+server:
+  port: 5001
+spring:
+  application:
+    name: user
+  cloud:
+    consul:
+      port: 8500
+      host: consul
+      discovery:
+        health-check-interval: 10s
+        health-check-path: /heartbeat
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+  rabbitmq:
+    host: rabbitmq
+    username: guest
+    password: guest
+    port: 5672
+    dynamic: true
+
+
+  #    Gmail SMTP
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: username
+    password: password
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+  # AWS SES SMTP
+
+  #  mail:
+  #    host: smtp.gmail.com
+  #    username: username
+  #    password: password
+  #    properties:
+  #      mail.smtp.auth: true
+  #      mail.smtp.starttls.enable: true
+  #      mail.smtp.starttls.required: true
+  #      mail.smtp.port: 25
+  #      mail.transport.protocol: smtp
+
+logging:
+  level:
+    org.springframework: INFO
+
+
+
+
+

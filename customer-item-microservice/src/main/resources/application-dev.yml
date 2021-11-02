@@ -1,0 +1,51 @@
+server:
+  port: 5004
+domain:
+  name: mydomain
+spring:
+  application:
+    name: customer-item-microservice
+  jpa:
+    database: postgresql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation= true
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/gotmovers
+    username: postgres
+    password: postgres
+  cloud:
+    consul:
+      port: 8500
+      host: localhost
+      discovery:
+        health-check-interval: 10s
+        health-check-path: /heartbeat
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    port: 5672
+    dynamic: true
+
+logging:
+  level:
+    org.springframework: INFO
+
+springdoc:
+  api-docs:
+    path: /api-docs
+
+
+

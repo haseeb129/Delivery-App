@@ -1,0 +1,11 @@
+export { default as AdminPayments } from './AdminPayments';
+export { default as LatestOrders } from './adminLatestOrders';
+export { default as LatestProducts } from './adminPaymentDetails';
+export { default as Dashboarddone } from './adminDashboarddone';
+export { default as StorePayments } from './adminStorePayments';
+export { default as DeliverymanPayments } from './adminDeliverymanPayments';
+export { default as OrderDetails } from './adminOrderDetails';
+export { default as PaymentDetails } from './adminPaymentDetails';
+export { default as LineChart } from './adminLineChart';
+export { default as BarChat } from './adminBarChat';
+export { default as FullDetails } from './adminFullDetails';

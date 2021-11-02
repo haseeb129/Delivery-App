@@ -1,0 +1,131 @@
+version: '3'
+
+services:
+
+  consul:
+    image: consul
+    ports:
+      - "8500:8500"
+      - "8600:8600"
+    command: "agent -server -bootstrap-expect=1 -ui -client 0.0.0.0"
+
+  gotmoversdb:
+    image: postgres
+    ports:
+      - '6432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=gotmovers
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+#    command: "rabbitmq-server"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - rabbitmq_data:/data
+
+#  front-end:
+#    container_name: front_end
+#    build:
+#      context: ./front-end/
+#    command: npm start
+#    volumes:
+#      - ./front-end/:/app
+#      - /app/node_modules
+#    ports:
+#      - 3001:3000
+#    stdin_open: true
+
+
+#  api-gateway:
+#    image: maven:3.6.1-jdk-8
+#    ports:
+#      - '8080:8080'
+#    working_dir: /app
+#    volumes:
+#      - ./api-gateway:/app
+#    depends_on:
+#      - consul
+#    command: 'mvn spring-boot:run'
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#
+#  user-microservice:
+#    image: maven:3.6.1-jdk-8
+#    ports:
+#      - '5001:5001'
+#    working_dir: /app
+#    volumes:
+#      - ./user-microservice:/app
+#    depends_on:
+#      - consul
+#    command: 'mvn spring-boot:run'
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+
+#  email-microservice:
+#    image: maven:3.6.1-jdk-8
+#    ports:
+#      - '6001:6001'
+#    working_dir: /app
+#    volumes:
+#      - ./email-microservice:/app
+#    depends_on:
+#      - consul
+#    command: 'mvn spring-boot:run'
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+
+
+  mail:
+    image: iredmail/mariadb:nightly
+    hostname: mail.email.com
+    ports:
+      - 90:80
+      - 444:443
+      - 110:110
+      - 995:995
+      - 143:143
+      - 993:993
+      - 25:25
+      - 465:465
+      - 587:587
+    volumes:
+      - iredmail_backup:/var/vmail/backup
+      - iredmail_mailboxes:/var/vmail/vmail1
+      - iredmail_mlmmj:/var/vmail/mlmmj
+      - iredmail_mlmmj_archive:/var/vmail/mlmmj-archive
+      - iredmail_imapsieve_copy:/var/vmail/imapsieve_copy
+      - iredmail_custom:/opt/iredmail/custom
+      - iredmail_ssl:/opt/iredmail/ssl
+      - iredmail_mysql:/var/lib/mysql
+      - iredmail_clamav:/var/lib/clamav
+      - iredmail_sa_rules:/var/lib/spamassassin
+      - iredmail_postfix_queue:/var/spool/postfix
+    environment:
+      - HOSTNAME=mail.email.com
+      - DEFAULT_PASSWD=password
+      - FIRST_MAIL_DOMAIN=email.com
+      - FIRST_MAIL_DOMAIN_ADMIN_PASSWORD=password
+      - MLMMJADMIN_API_TOKEN=AHlTP7JvEgZKFHyD/+Qn1jJBhoXL8db54zTh6yJsaU8=
+      - ROUNDCUBE_DES_KEY=RN8Ccq3vCdoqmffs7dN1QgEHYymOFVI4
+
+volumes:
+  rabbitmq_data:
+  iredmail_backup:
+  iredmail_mailboxes:
+  iredmail_mlmmj:
+  iredmail_mlmmj_archive:
+  iredmail_imapsieve_copy:
+  iredmail_custom:
+  iredmail_ssl:
+  iredmail_mysql:
+  iredmail_clamav:
+  iredmail_sa_rules:
+  iredmail_postfix_queue:

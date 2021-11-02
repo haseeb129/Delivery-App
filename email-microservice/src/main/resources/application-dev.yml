@@ -1,0 +1,66 @@
+server:
+  port: 6001
+sender:
+  email: postmaster@email.com
+spring:
+  application:
+    name: email
+  cloud:
+    consul:
+      port: 8500
+      host: localhost
+      discovery:
+        health-check-interval: 10s
+        health-check-path: /heartbeat
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    port: 5672
+    dynamic: true
+    listener:
+      simple:
+        auto-startup: true
+      direct:
+        auto-startup: true
+
+  #    Email SMTP
+  mail:
+    host: localhost
+    protocol: smtp
+    port: 587
+    username: postmaster@email.com
+    password: password
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.debug: true
+
+
+# AWS SES SMTP
+
+#  mail:
+#    host: smtp.gmail.com
+#    username: username
+#    password: password
+#    properties:
+#      mail.smtp.auth: true
+#      mail.smtp.starttls.enable: true
+#      mail.smtp.starttls.required: true
+#      mail.smtp.port: 25
+#      mail.transport.protocol: smtp
+
+logging:
+  level:
+    org.springframework: INFO
+
+springdoc:
+  api-docs:
+    path: /api-docs
+
+
+

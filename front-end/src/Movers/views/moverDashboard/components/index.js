@@ -1,0 +1,11 @@
+export { default as AdminPayments } from './MoverPayments';
+export { default as LatestOrders } from './moverLatestOrders';
+export { default as LatestProducts } from './moverPaymentDetails';
+export { default as Dashboarddone } from './moverDashboarddone';
+export { default as StorePayments } from './moverStorePayments';
+export { default as DeliverymanPayments } from './moverDeliverymanPayments';
+export { default as OrderDetails } from './moverOrderDetails';
+export { default as PaymentDetails } from './moverPaymentDetails';
+export { default as LineChart } from './moverLineChart';
+export { default as BarChat } from './moverBarChat';
+export { default as FullDetails } from './moverFullDetails';

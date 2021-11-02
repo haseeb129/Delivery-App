@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "4589fae0-0ea2-4a0c-87b9-5e0882423232",
+		"name": "Gotmovers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login Success",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"superman@email.com\",\n\t\"password\":\"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Succefull Login Will Return JWT and Email. "
+			},
+			"response": []
+		},
+		{
+			"name": "Signup Success",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"spiderman@email.com\",\n\t\"password\":\"password\",\n\t\"role\":\"customer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/auth/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"auth",
+						"signup"
+					]
+				},
+				"description": "Singup Succefull with Token in return. "
+			},
+			"response": []
+		},
+		{
+			"name": "User Activation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/auth/activation/?token=BuyV6Vpye9xZtQuZzkTldIq06rqyRpniIvNf55CYDOGajCKiQ6HmudNy4is97vENYj8GhExNNMYaVsCO41i8Hk0KvTjMkAoYv4FC",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"auth",
+						"activation",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "BuyV6Vpye9xZtQuZzkTldIq06rqyRpniIvNf55CYDOGajCKiQ6HmudNy4is97vENYj8GhExNNMYaVsCO41i8Hk0KvTjMkAoYv4FC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Charging Credit Card",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"amount\":\"100\",\n\t\"currency\":\"USD\",\n\t\"description\":\"testing from billing\",\n\t\"stripeToken\":\"tok_1GwanNIzf1AI5IuBuwiZ58qD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/billing/charge",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"billing",
+						"charge"
+					]
+				},
+				"description": "    "
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

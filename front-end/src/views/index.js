@@ -1,0 +1,11 @@
+export { default as Dashboard } from './Dashboard';
+export { default as BookNow } from './BookNow';
+export { default as Reserve } from './Reserve';
+export { default as Contact } from './Contact';
+export { default as ThankYou } from './ThankYou';
+export { default as MoreInfo } from './MoreInfo';
+export { default as FinalCost } from './FinalCost';
+export { default as LastDetail } from './LastDetail';
+export { default as Review } from './Review';
+export { default as Help } from './Help';
+export { default as FinalStep } from './FinalStep';

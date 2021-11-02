@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    consul:
+      port: 8500
+      host: consul
+      discovery:
+        health-check-interval: 10s
+        health-check-path: /heartbeat
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
